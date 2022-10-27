@@ -20,7 +20,7 @@ worker ch = forever $ do
                 writeChan ch command
 
 processCommand :: String -> [String]
-processCommand command = case command_name of "uci" -> ["id name engine_name Chess Engine", "id author Satwik Path","uciok"]
+processCommand command = case command_name of "uci" -> ["id name Chess Engine", "id author Satwik Path","uciok"]
                                               "debug" -> []
                                               "isready" -> ["readyok"]
                                               "ucinewgame" -> []
@@ -28,4 +28,4 @@ processCommand command = case command_name of "uci" -> ["id name engine_name Che
                                               x -> []
                          where command_name =  head (words command)
 
-parsePositionCommand :: 
+--ParsePositionCommand :: 

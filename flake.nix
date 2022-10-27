@@ -1,41 +1,28 @@
 {
   description = "Chess Engine";
   inputs.haskellNix.url = "github:input-output-hk/haskell.nix";
-  inputs.nixpkgs.follows = "haskellNix/nixpkgs-unstable";
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
   inputs.flake-utils.url = "github:numtide/flake-utils";
-  outputs = { self, nixpkgs, flake-utils, haskellNix }:
-    flake-utils.lib.eachSystem [ "x86_64-linux" "x86_64-darwin" ] (system:
+  inputs.hix.url = "github:tek/hix";
+
+  outputs = { self, nixpkgs, flake-utils, haskellNix, hix }:
+    #flake-utils.lib.eachSystem [ "x86_64-linux" "x86_64-darwin" ] (system:
     let
-      overlays = [ haskellNix.overlay
-        (final: prev: {
-          # This overlay adds our project to pkgs
-          chessEngine =
-            final.haskell-nix.project' {
-              src = ./.;
-              compiler-nix-name = "ghc924";
-              # This is used by `nix develop .` to open a shell for use with
-              # `cabal`, `hlint` and `haskell-language-server`
-              shell.tools = {
-                cabal = {};
-                hlint = {};
-                haskell-language-server = {};
-              };
-              # Non-Haskell shell tools go here
-              shell.buildInputs = with pkgs; [
-                nixpkgs-fmt
-              ];
-              # This adds `js-unknown-ghcjs-cabal` to the shell.
-              # shell.crossPlatforms = p: [p.ghcjs];
-            };
-        })
-      ];
-      pkgs = import nixpkgs { inherit system overlays; inherit (haskellNix) config; };
-      flake = pkgs.chessEngine.flake {
-        # This adds support for `nix build .#js-unknown-ghcjs:hello:exe:hello`
-        # crossPlatforms = p: [p.ghcjs];
+      nixpkgs-unfree = import "${nixpkgs}" {
+        system = "x86_64-linux";
+        config.allowUnFree = true;
       };
-    in flake // {
-      # Built by `nix build .`
-      packages.${system}.default = flake.packages."chessengine:exe:chessengine";
-    });
+      arena = nixpkgs-unfree.arena;
+    in   
+      hix.lib.flake {
+        base = ./.;
+        packages = {ChessEngine = ./.;};
+        ghcid.shellConfig = {
+          buildInputs = [arena];
+        };
+        #overrides = {buildInputs, super, self...}: {arena = nixpkgs-unfree.arena; };
+
+      }; 
+
+    #  );
 }
