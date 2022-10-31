@@ -1,12 +1,17 @@
 module Main where
 
-import Control.Concurrent
+
+
+
+import Control.Concurrent 
 import Game.Chess (fromFEN, Position, startpos, legalPlies, fromUCI, toUCI, Ply, doPly, unsafeDoPly)
 
 import System.IO (BufferMode (LineBuffering), hSetBuffering, stdin, stdout)
 import Data.List (foldl')
 
 import Control.Monad.State
+
+import ChessEngine
 
 main :: IO ()
 main = do 
@@ -23,6 +28,7 @@ main = do
 runGame :: [String] -> [[String]]
 runGame xs = evalState (processCommands xs) (startpos :: Position)
                 
+
  
 processCommands :: [String] -> State Position [[String]]
 
@@ -83,8 +89,6 @@ getBestMovesFromArgs posUCI movesUCI = maybe "" (flip movesToCommand $  moves)  
                            movesToCommand position = generateCommand . bestMove . applyMoves position
                            moves = mapWithState (getJustVal pos) fromUCI doPly movesUCI
 
-
-
 mapWithState :: c -> (c-> a -> Maybe b) -> (c -> b ->  c) -> [a] -> [b] 
 
 mapWithState  _ _ _  [] = []
@@ -98,11 +102,11 @@ getPosition pos = fromFEN pos
 applyMoves :: Position -> [Ply] -> Position
 applyMoves pos moves = foldl' doPly pos moves
 
-bestMove :: Position -> Ply
-bestMove pos = head $ legalPlies pos
-
 generateCommand :: Ply -> String
 generateCommand move = unwords ["bestmove", toUCI move]
+
+--bestMove :: Position -> Ply
+--bestMove pos = head $ legalPlies pos
 
 
 

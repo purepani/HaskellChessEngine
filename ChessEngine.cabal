@@ -52,7 +52,7 @@ extra-doc-files:    CHANGELOG.md
 -- extra-source-files:
 
 common warnings
-    ghc-options: -Wall
+    ghc-options: -Wall -threaded -with-rtsopts="-s ~/log.txt"
 
 executable ChessEngine
     -- Import common warning flags.
@@ -62,13 +62,13 @@ executable ChessEngine
     main-is:          Main.hs
 
     -- Modules included in this executable, other than Main.
-    -- other-modules:
+    other-modules: ChessEngine
 
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
 
     -- Other library packages from which modules are imported.
-    build-depends:    base >=4.15.1.0, chessIO, unix, mtl
+    build-depends:    base >=4.15.1.0, chessIO, unix, mtl, containers, hashtables, hashable, parallel
 
     -- Directories containing source files.
     hs-source-dirs:   app

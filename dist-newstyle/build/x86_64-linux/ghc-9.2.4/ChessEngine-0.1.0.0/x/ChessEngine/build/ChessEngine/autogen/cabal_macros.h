@@ -30,6 +30,36 @@
   (major1) == 0 && (major2) <  9 || \
   (major1) == 0 && (major2) == 9 && (minor) <= 3)
 #endif /* MIN_VERSION_chessIO */
+/* package containers-0.6.5.1 */
+#ifndef VERSION_containers
+#define VERSION_containers "0.6.5.1"
+#endif /* VERSION_containers */
+#ifndef MIN_VERSION_containers
+#define MIN_VERSION_containers(major1,major2,minor) (\
+  (major1) <  0 || \
+  (major1) == 0 && (major2) <  6 || \
+  (major1) == 0 && (major2) == 6 && (minor) <= 5)
+#endif /* MIN_VERSION_containers */
+/* package hashable-1.4.1.0 */
+#ifndef VERSION_hashable
+#define VERSION_hashable "1.4.1.0"
+#endif /* VERSION_hashable */
+#ifndef MIN_VERSION_hashable
+#define MIN_VERSION_hashable(major1,major2,minor) (\
+  (major1) <  1 || \
+  (major1) == 1 && (major2) <  4 || \
+  (major1) == 1 && (major2) == 4 && (minor) <= 1)
+#endif /* MIN_VERSION_hashable */
+/* package hashtables-1.3.1 */
+#ifndef VERSION_hashtables
+#define VERSION_hashtables "1.3.1"
+#endif /* VERSION_hashtables */
+#ifndef MIN_VERSION_hashtables
+#define MIN_VERSION_hashtables(major1,major2,minor) (\
+  (major1) <  1 || \
+  (major1) == 1 && (major2) <  3 || \
+  (major1) == 1 && (major2) == 3 && (minor) <= 1)
+#endif /* MIN_VERSION_hashtables */
 /* package mtl-2.2.2 */
 #ifndef VERSION_mtl
 #define VERSION_mtl "2.2.2"
@@ -40,6 +70,16 @@
   (major1) == 2 && (major2) <  2 || \
   (major1) == 2 && (major2) == 2 && (minor) <= 2)
 #endif /* MIN_VERSION_mtl */
+/* package parallel-3.2.2.0 */
+#ifndef VERSION_parallel
+#define VERSION_parallel "3.2.2.0"
+#endif /* VERSION_parallel */
+#ifndef MIN_VERSION_parallel
+#define MIN_VERSION_parallel(major1,major2,minor) (\
+  (major1) <  3 || \
+  (major1) == 3 && (major2) <  2 || \
+  (major1) == 3 && (major2) == 2 && (minor) <= 2)
+#endif /* MIN_VERSION_parallel */
 /* package unix-2.7.2.2 */
 #ifndef VERSION_unix
 #define VERSION_unix "2.7.2.2"
@@ -121,15 +161,15 @@
   (major1) == 9 && (major2) <  2 || \
   (major1) == 9 && (major2) == 2 && (minor) <= 4)
 #endif /* MIN_TOOL_VERSION_runghc */
-/* tool strip-2.38 */
+/* tool strip-2.39 */
 #ifndef TOOL_VERSION_strip
-#define TOOL_VERSION_strip "2.38"
+#define TOOL_VERSION_strip "2.39"
 #endif /* TOOL_VERSION_strip */
 #ifndef MIN_TOOL_VERSION_strip
 #define MIN_TOOL_VERSION_strip(major1,major2,minor) (\
   (major1) <  2 || \
-  (major1) == 2 && (major2) <  38 || \
-  (major1) == 2 && (major2) == 38 && (minor) <= 0)
+  (major1) == 2 && (major2) <  39 || \
+  (major1) == 2 && (major2) == 39 && (minor) <= 0)
 #endif /* MIN_TOOL_VERSION_strip */
 
 #ifndef CURRENT_COMPONENT_ID
