@@ -1,10 +1,7 @@
 module Main where
 
-
-
-
 import Control.Concurrent 
-import Game.Chess (fromFEN, Position, startpos, legalPlies, fromUCI, toUCI, Ply, doPly, unsafeDoPly)
+import Game.Chess (fromFEN, Position, startpos, fromUCI, toUCI, Ply, doPly, unsafeDoPly)
 
 import System.IO (BufferMode (LineBuffering), hSetBuffering, stdin, stdout)
 import Data.List (foldl')

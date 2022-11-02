@@ -50,15 +50,15 @@
   (major1) == 1 && (major2) <  4 || \
   (major1) == 1 && (major2) == 4 && (minor) <= 1)
 #endif /* MIN_VERSION_hashable */
-/* package hashtables-1.3.1 */
+/* package hashtables-1.2.4.2 */
 #ifndef VERSION_hashtables
-#define VERSION_hashtables "1.3.1"
+#define VERSION_hashtables "1.2.4.2"
 #endif /* VERSION_hashtables */
 #ifndef MIN_VERSION_hashtables
 #define MIN_VERSION_hashtables(major1,major2,minor) (\
   (major1) <  1 || \
-  (major1) == 1 && (major2) <  3 || \
-  (major1) == 1 && (major2) == 3 && (minor) <= 1)
+  (major1) == 1 && (major2) <  2 || \
+  (major1) == 1 && (major2) == 2 && (minor) <= 4)
 #endif /* MIN_VERSION_hashtables */
 /* package mtl-2.2.2 */
 #ifndef VERSION_mtl
@@ -161,15 +161,15 @@
   (major1) == 9 && (major2) <  2 || \
   (major1) == 9 && (major2) == 2 && (minor) <= 4)
 #endif /* MIN_TOOL_VERSION_runghc */
-/* tool strip-2.39 */
+/* tool strip-2.38 */
 #ifndef TOOL_VERSION_strip
-#define TOOL_VERSION_strip "2.39"
+#define TOOL_VERSION_strip "2.38"
 #endif /* TOOL_VERSION_strip */
 #ifndef MIN_TOOL_VERSION_strip
 #define MIN_TOOL_VERSION_strip(major1,major2,minor) (\
   (major1) <  2 || \
-  (major1) == 2 && (major2) <  39 || \
-  (major1) == 2 && (major2) == 39 && (minor) <= 0)
+  (major1) == 2 && (major2) <  38 || \
+  (major1) == 2 && (major2) == 38 && (minor) <= 0)
 #endif /* MIN_TOOL_VERSION_strip */
 
 #ifndef CURRENT_COMPONENT_ID
